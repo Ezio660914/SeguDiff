@@ -14,5 +14,12 @@ This study utilizes three publicly available ECG datasets from [PhysioNet](https
 
 All these datasets have been uploaded in the "data" folder.
 
-## This repository is still actively under construction!
+## Environment Setup
 
+1. Please create a virtual environment with `python 3.10`
+2. Install main packages `pytorch 2.5.1` and `pytorch lightning 2.5.0`
+3. Install other essential packages listed in the `requirements.txt`
+
+## Run Experiment
+
+To train our SeguDiff model on the LUDB dataset, run `train_segudiff.py` in the folder `source/experiments/ecg_denoise`.
