@@ -1,0 +1,42 @@
+trainer:
+  class: RDDMSegmentation
+  args:
+    n_diffusion_steps: 1000
+    n_sampling_steps: 200
+    ddim_sampling_eta: 0
+    sum_scale: 0.005
+    alpha_ratio: 1
+    beta_ratio: 1
+    channel_last: true
+    cond_drop_prob: 0
+    cond_scale: 1
+    rescaled_phi: 0
+    clip_x_start: [ -5, 5 ]
+    alpha_schedule: decreased
+    beta_schedule: increased
+    min_snr_loss_weight: true
+    min_snr_gamma: 10000000
+    num_classes: 4
+    ce_loss_weight: 0.01
+    preprocess: false
+
+models:
+  denoise_model:
+    class: UNet1d
+    args:
+      in_channels: 1
+      out_channels: 5
+      model_channels: 64
+      channel_mult: [ 1, 2, 4, 8 ]
+      context_dim: 1
+      num_res_blocks: 2
+      transformer_n_heads: 2
+      time_embed_dim: null
+      time_embed_max_period: 10000
+      dropout: 0
+      use_scale_shift_norm: true
+      conv_resample: true
+      res_block_updown: true
+      channel_last: true
+      norm_groups: 32
+    checkpoint: null
